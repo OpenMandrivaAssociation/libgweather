@@ -17,6 +17,7 @@ Group: System/Libraries
 Url: http://www.gnome.org
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gnome-vfs2-devel
+BuildRequires: gtk+2-devel
 BuildRequires: perl-XML-Parser
 Conflicts: gnome-applets < 2.21.3
 
