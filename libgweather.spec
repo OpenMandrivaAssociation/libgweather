@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.22.1.1
+%define version 2.22.1.2
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
@@ -52,9 +52,12 @@ This is a library to provide Weather data to the GNOME panel applet.
 %make
 
 %install
-rm -rf %{buildroot}
+rm -rf %{buildroot} %name.lang
 %makeinstall_std
 %find_lang %name
+for xmlfile in  %buildroot%_datadir/%name/Locations.*.xml; do
+echo "%lang($(basename $xmlfile|sed -e s/Locations.// -e s/.xml//)) $(echo $xmlfile | sed s!%buildroot!!)" >> %name.lang
+done
 
 %clean
 rm -rf %{buildroot}
@@ -72,7 +75,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS NEWS
 %_sysconfdir/gconf/schemas/gweather.schemas
-%_datadir/%name
+%dir %_datadir/%name
+%_datadir/%name/locations.dtd
+%_datadir/%name/Locations.xml
 
 %files -n %libname
 %defattr(-, root, root)
