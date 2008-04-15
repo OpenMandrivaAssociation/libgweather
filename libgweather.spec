@@ -20,6 +20,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gnome-vfs2-devel
 BuildRequires: gtk+2-devel
 BuildRequires: perl-XML-Parser
+BuildRequires: libxml2-utils
 Conflicts: gnome-applets < 2.21.3
 
 %description
