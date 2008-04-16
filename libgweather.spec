@@ -50,7 +50,7 @@ This is a library to provide Weather data to the GNOME panel applet.
 
 %build
 %configure2_5x
-%make
+make
 
 %install
 rm -rf %{buildroot} %name.lang
