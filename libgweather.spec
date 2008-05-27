@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.22.1.2
+%define version 2.22.2
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
@@ -50,7 +50,7 @@ This is a library to provide Weather data to the GNOME panel applet.
 
 %build
 %configure2_5x
-make
+%make LIBS=-lm
 
 %install
 rm -rf %{buildroot} %name.lang
