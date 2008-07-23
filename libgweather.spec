@@ -19,6 +19,7 @@ Url: http://www.gnome.org
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: libsoup-devel
 BuildRequires: gtk+2-devel
+BuildRequires: libGConf2-devel
 BuildRequires: intltool
 BuildRequires: libxml2-utils
 Conflicts: gnome-applets < 2.21.3
