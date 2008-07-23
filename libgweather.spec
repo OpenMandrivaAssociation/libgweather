@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.23.4
+%define version 2.23.5
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
@@ -12,12 +12,12 @@ Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (fc) 2.22.0-2mdv fix i18n init
-Patch0: libgweather-2.22.0-i18ninit.patch
+Patch0: libgweather-2.23.5-i18ninit.patch
 License: GPLv2+
 Group: System/Libraries
 Url: http://www.gnome.org
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: gnome-vfs2-devel
+BuildRequires: libsoup-devel
 BuildRequires: gtk+2-devel
 BuildRequires: intltool
 BuildRequires: libxml2-utils
