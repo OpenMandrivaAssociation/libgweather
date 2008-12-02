@@ -1,6 +1,6 @@
 %define name libgweather
 %define version 2.25.2
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 1
 %define libname %mklibname gweather %major
 %define develname %mklibname -d gweather
@@ -22,8 +22,6 @@ BuildRequires: gtk+2-devel
 BuildRequires: libGConf2-devel
 BuildRequires: intltool
 BuildRequires: libxml2-utils
-# gw libtool dep:
-BuildRequires: libtasn1-devel
 Conflicts: gnome-applets < 2.21.3
 
 %description
