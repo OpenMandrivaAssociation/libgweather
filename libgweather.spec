@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.24.2
+%define version 2.25.2
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
@@ -98,4 +98,4 @@ rm -rf %{buildroot}
 %_libdir/lib*.so
 %_libdir/pkgconfig/*.pc
 %_includedir/*
-
+%_datadir/gtk-doc/html/%name
