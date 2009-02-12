@@ -1,6 +1,6 @@
 %define name libgweather
 %define version 2.25.5
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 1
 %define libname %mklibname gweather %major
 %define develname %mklibname -d gweather
@@ -11,8 +11,6 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.22.0-2mdv fix i18n init
-Patch0: libgweather-2.23.5-i18ninit.patch
 License: GPLv2+
 Group: System/Libraries
 Url: http://www.gnome.org
@@ -47,11 +45,10 @@ This is a library to provide Weather data to the GNOME panel applet.
 
 %prep
 %setup -q
-%patch0 -p1 -b .i18ninit
 
 %build
 %configure2_5x
-%make LIBS=-lm
+%make 
 
 %install
 rm -rf %{buildroot} %name.lang
