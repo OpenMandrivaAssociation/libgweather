@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.25.92
+%define version 2.26.0
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
