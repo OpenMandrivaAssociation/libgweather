@@ -20,6 +20,8 @@ BuildRequires: gtk+2-devel
 BuildRequires: libGConf2-devel
 BuildRequires: intltool
 BuildRequires: libxml2-utils
+#gw libtool dep:
+BuildRequires: dbus-glib-devel
 Conflicts: gnome-applets < 2.21.3
 
 %description
