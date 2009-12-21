@@ -1,5 +1,5 @@
 %define name libgweather
-%define version 2.28.0
+%define version 2.29.4
 %define release %mkrel 1
 %define major 1
 %define libname %mklibname gweather %major
@@ -83,6 +83,7 @@ rm -rf %{buildroot}
 %dir %_datadir/%name
 %_datadir/%name/locations.dtd
 %_datadir/%name/Locations.xml
+%_datadir/icons/gnome/*/status/weather*
 
 %files -n %libname
 %defattr(-, root, root)
