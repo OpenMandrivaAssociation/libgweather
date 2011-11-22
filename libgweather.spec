@@ -14,11 +14,11 @@ Release: 1
 License: GPLv2+
 Group: System/Libraries
 Url: http://www.gnome.org
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool >= 0.40.6
 BuildRequires:	libxml2-utils
-BuildRequires:	pkgconfig(gconf-2.0) >= 2.8.0
+BuildRequires:	pkgconfig(gconf-2.0) GConf2
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.0
 BuildRequires:	pkgconfig(gobject-2.0)
@@ -67,19 +67,19 @@ This is a library to provide Weather data to the GNOME panel applet.
 %make 
 
 %install
-rm -rf %{buildroot} %{name}.lang
+rm -rf %{buildroot}
 %makeinstall_std
-%find_lang %{name}
+%find_lang %{name}-3.0
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 for xmlfile in  %{buildroot}%{_datadir}/%{name}/Locations.*.xml; do
-echo "%lang($(basename $xmlfile|sed -e s/Locations.// -e s/.xml//)) $(echo $xmlfile | sed s!%{buildroot}!!)" >> %{name}.lang
+echo "%lang($(basename $xmlfile|sed -e s/Locations.// -e s/.xml//)) $(echo $xmlfile | sed s!%{buildroot}!!)" >> %{name}-3.0.lang
 done
 
 %preun
 %preun_uninstall_gconf_schemas gweather
 
-%files -f %{name}.lang
+%files -f %{name}-3.0.lang
 %doc AUTHORS NEWS
 %{_sysconfdir}/gconf/schemas/gweather.schemas
 %dir %{_datadir}/%{name}
