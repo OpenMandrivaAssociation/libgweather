@@ -1,99 +1,103 @@
-%define name libgweather
-%define version 2.30.3
-%define release %mkrel 5
-%define major 1
-%define libname %mklibname gweather %major
-%define develname %mklibname -d gweather
+%define api			3
+%define major		0
+%define gir_major	3.0
+
+%define libname		%mklibname gweather %{api} %{major}
+%define develname	%mklibname -d gweather
+%define girname		%mklibname gweather-gir %{gir_major}
 %define olddevelname %mklibname -d gnome-applets
 
 Summary: GNOME Weather applet library
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Name: libgweather
+Version: 3.2.1
+Release: 1
 License: GPLv2+
 Group: System/Libraries
 Url: http://www.gnome.org
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: libsoup-devel
-BuildRequires: gtk+2-devel
-BuildRequires: libGConf2-devel
-BuildRequires: intltool
-BuildRequires: libxml2-utils
-#gw libtool dep:
-BuildRequires: dbus-glib-devel
-Conflicts: gnome-applets < 2.21.3
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+
+BuildRequires:	intltool >= 0.40.6
+BuildRequires:	libxml2-utils
+BuildRequires:	pkgconfig(gconf-2.0) >= 2.8.0
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.0
+BuildRequires:	pkgconfig(gobject-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.10.5
+BuildRequires:	pkgconfig(libsoup-gnome-2.4) >= 2.25.1
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.6.0
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
 
-%package -n %libname
+%package -n %{libname}
 Group: System/Libraries
 Summary: GNOME Weather applet library
-Requires: %name >= %version
+Requires: %{name} >= %{version}-%{release}
 
-%description -n %libname
+%description -n %{libname}
 This is a library to provide Weather data to the GNOME panel applet.
 
-%package -n %develname
+%package -n %{girname}
+Summary: GObject Introspection interface description for %{name}
+Group: System/Libraries
+Requires: %{libname} = %{version}-%{release}
+
+%description -n %{girname}
+GObject Introspection interface description for %{name}.
+
+%package -n %{develname}
 Group: Development/C
 Summary: GNOME Weather applet library
-Requires: %libname = %version
-Provides: %name-devel = %version-%release
+Requires: %{libname} = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release}
 Obsoletes: %olddevelname < 2.21.3
 
-%description -n %develname
+%description -n %{develname}
 This is a library to provide Weather data to the GNOME panel applet.
 
 %prep
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+	--enable-introspection=yes \
+	--disable-static \
+	--disable-gtk-doc 
+
 %make 
 
 %install
-rm -rf %{buildroot} %name.lang
+rm -rf %{buildroot} %{name}.lang
 %makeinstall_std
-%find_lang %name
-for xmlfile in  %buildroot%_datadir/%name/Locations.*.xml; do
-echo "%lang($(basename $xmlfile|sed -e s/Locations.// -e s/.xml//)) $(echo $xmlfile | sed s!%buildroot!!)" >> %name.lang
+%find_lang %{name}
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
+
+for xmlfile in  %{buildroot}%{_datadir}/%{name}/Locations.*.xml; do
+echo "%lang($(basename $xmlfile|sed -e s/Locations.// -e s/.xml//)) $(echo $xmlfile | sed s!%{buildroot}!!)" >> %{name}.lang
 done
 
-%clean
-rm -rf %{buildroot}
-
-%post
-%post_install_gconf_schemas gweather
 %preun
 %preun_uninstall_gconf_schemas gweather
 
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
-
-%files -f %name.lang
-%defattr(-,root,root)
+%files -f %{name}.lang
 %doc AUTHORS NEWS
-%_sysconfdir/gconf/schemas/gweather.schemas
-%dir %_datadir/%name
-%_datadir/%name/locations.dtd
-%_datadir/%name/Locations.xml
-%_datadir/icons/gnome/*/status/weather*
+%{_sysconfdir}/gconf/schemas/gweather.schemas
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/locations.dtd
+%{_datadir}/%{name}/Locations.xml
+%{_datadir}/icons/gnome/*/status/weather*
 
-%files -n %libname
-%defattr(-, root, root)
-%_libdir/libgweather.so.%{major}*
+%files -n %{libname}
+%{_libdir}/libgweather-%{api}.so.%{major}*
 
-%files -n %develname
-%defattr(-, root, root)
+%files -n %{girname}
+%{_libdir}/girepository-1.0/GWeather-%{gir_major}.typelib
+
+%files -n %{develname}
 %doc ChangeLog
-%attr(644,root,root) %_libdir/lib*a
-%_libdir/lib*.so
-%_libdir/pkgconfig/*.pc
-%_includedir/*
-%_datadir/gtk-doc/html/%name
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
+%{_includedir}/*
+%{_datadir}/gtk-doc/html/%{name}-3.0
+%{_datadir}/gir-1.0/GWeather-%{gir_major}.gir
+
