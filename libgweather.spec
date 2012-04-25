@@ -1,4 +1,7 @@
-%define api			3
+%define url_ver	%(echo %{version}|cut -d. -f1,2)
+
+
+%define api		3
 %define major		0
 %define gir_major	3.0
 
@@ -9,22 +12,21 @@
 
 Summary: GNOME Weather applet library
 Name: libgweather
-Version: 3.2.1
+Version: 3.4.1
 Release: 1
 License: GPLv2+
 Group: System/Libraries
 Url: http://www.gnome.org
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/libgweather/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires:	intltool >= 0.40.6
+BuildRequires:	intltool
 BuildRequires:	libxml2-utils
 BuildRequires:	pkgconfig(gconf-2.0) GConf2
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.0
-BuildRequires:	pkgconfig(gobject-2.0)
-BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.10.5
-BuildRequires:	pkgconfig(libsoup-gnome-2.4) >= 2.25.1
-BuildRequires:	pkgconfig(libxml-2.0) >= 2.6.0
+BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(libsoup-gnome-2.4)
+BuildRequires:	pkgconfig(libxml-2.0)
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
@@ -40,7 +42,6 @@ This is a library to provide Weather data to the GNOME panel applet.
 %package -n %{girname}
 Summary: GObject Introspection interface description for %{name}
 Group: System/Libraries
-Requires: %{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
@@ -67,7 +68,6 @@ This is a library to provide Weather data to the GNOME panel applet.
 %make 
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %find_lang %{name}-3.0
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
