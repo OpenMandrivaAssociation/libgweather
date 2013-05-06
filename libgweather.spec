@@ -2,7 +2,7 @@
 
 
 %define api		3
-%define major		1
+%define major		3
 %define gir_major	3.0
 
 %define libname		%mklibname gweather %{api} %{major}
@@ -12,7 +12,7 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.6.2
+Version:	3.8.1
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
