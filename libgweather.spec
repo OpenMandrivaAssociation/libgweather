@@ -1,14 +1,11 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
-
-%define api		3
-%define major		3
-%define gir_major	3.0
-
-%define libname		%mklibname gweather %{api} %{major}
-%define develname	%mklibname -d gweather
-%define girname		%mklibname gweather-gir %{gir_major}
-%define olddevelname %mklibname -d gnome-applets
+%define api	3
+%define major	3
+%define gimajor	3.0
+%define libname	%mklibname gweather %{api} %{major}
+%define girname	%mklibname gweather-gir %{gimajor}
+%define devname	%mklibname -d gweather
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
@@ -46,15 +43,14 @@ Group:		System/Libraries
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
 
-%package -n %{develname}
+%package -n %{devname}
 Group:		Development/C
 Summary:	GNOME Weather applet library
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{olddevelname} < 2.21.3
 
-%description -n %{develname}
-This is a library to provide Weather data to the GNOME panel applet.
+%description -n %{devname}
+This package contains the development files for %{name}.
 
 %prep
 %setup -q
@@ -88,12 +84,13 @@ done
 %{_libdir}/libgweather-%{api}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/GWeather-%{gir_major}.typelib
+%{_libdir}/girepository-1.0/GWeather-%{gimajor}.typelib
 
-%files -n %{develname}
+%files -n %{devname}
 %doc ChangeLog
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 %{_datadir}/gtk-doc/html/%{name}-3.0
-%{_datadir}/gir-1.0/GWeather-%{gir_major}.gir
+%{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
+
