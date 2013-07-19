@@ -9,12 +9,12 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.8.1
+Version:	3.9.2
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.gnome.org
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/libgweather/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org:21/pub/GNOME/sources/libgweather/3.9/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool
 BuildRequires:	libxml2-utils
@@ -93,4 +93,5 @@ done
 %{_includedir}/*
 %{_datadir}/gtk-doc/html/%{name}-3.0
 %{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
+
 

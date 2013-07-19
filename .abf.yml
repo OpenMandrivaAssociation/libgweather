@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   libgweather-3.8.1.tar.xz: b25842bac3d0e9c01f8dfda0d93f223762666cf4
+sources:
+  libgweather-3.9.2.tar.xz: 33b15f2fa1a1a2e64c97b70f0f3c289efcc696be
