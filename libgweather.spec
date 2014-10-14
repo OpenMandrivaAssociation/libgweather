@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	timezone
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
