@@ -9,7 +9,7 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.16.1
+Version:	3.18.1
 Release:	3
 License:	GPLv2+
 Group:		System/Libraries
@@ -61,9 +61,9 @@ This package contains the development files for %{name}.
 %configure \
 	--enable-introspection=yes \
 	--disable-static \
-	--disable-gtk-doc 
+	--disable-gtk-doc
 
-%make 
+%make
 
 %install
 %makeinstall_std
