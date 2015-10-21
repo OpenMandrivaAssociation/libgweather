@@ -1,4 +1,5 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
+%define _disable_rebuild_configure 1
 
 %define api	3
 %define major	6
@@ -10,7 +11,7 @@
 Summary:	GNOME Weather applet library
 Name:		libgweather
 Version:	3.18.1
-Release:	3
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.gnome.org
