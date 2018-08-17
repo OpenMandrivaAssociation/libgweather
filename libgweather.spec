@@ -59,15 +59,12 @@ This package contains the development files for %{name}.
 %setup -q
 
 %build
-%configure \
-	--enable-introspection=yes \
-	--disable-static \
-	--disable-gtk-doc
+%meson -Denable_vala=true -Dgtk_doc=true
 
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %{name}-3.0
 %find_lang %{name}-locations
 cat %{name}-locations.lang >> %{name}-3.0.lang
