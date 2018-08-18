@@ -59,7 +59,7 @@ This package contains the development files for %{name}.
 %setup -q
 
 %build
-%meson -Denable_vala=true -Dgtk_doc=true
+%meson
 
 %meson_build
 
