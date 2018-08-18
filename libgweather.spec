@@ -27,6 +27,7 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	timezone
+BuildRequires:  meson
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
@@ -59,7 +60,7 @@ This package contains the development files for %{name}.
 %setup -q
 
 %build
-%meson          \
+%meson -Denable_vala=true -Dgtk_doc=true
 
 %meson_build
 
