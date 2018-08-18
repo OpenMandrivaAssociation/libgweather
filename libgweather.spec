@@ -59,7 +59,7 @@ This package contains the development files for %{name}.
 %setup -q
 
 %build
-%meson
+%meson          \
 
 %meson_build
 
