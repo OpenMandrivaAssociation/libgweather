@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	timezone
 BuildRequires:  meson
 BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  gtk-doc
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
