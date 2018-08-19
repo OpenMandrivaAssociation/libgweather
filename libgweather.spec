@@ -2,7 +2,7 @@
 %define _disable_rebuild_configure 1
 
 %define api	3
-%define major	6
+%define major	15
 %define gimajor	3.0
 %define libname	%mklibname gweather %{api} %{major}
 %define girname	%mklibname gweather-gir %{gimajor}
@@ -10,8 +10,8 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.18.1
-Release:	2
+Version:	3.28.2
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.gnome.org
@@ -27,6 +27,9 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	timezone
+BuildRequires:  meson
+BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  gtk-doc
 
 %description
 This is a library to provide Weather data to the GNOME panel applet.
@@ -59,15 +62,12 @@ This package contains the development files for %{name}.
 %setup -q
 
 %build
-%configure \
-	--enable-introspection=yes \
-	--disable-static \
-	--disable-gtk-doc
+%meson -Denable_vala=true -Dgtk_doc=true
 
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %{name}-3.0
 %find_lang %{name}-locations
 cat %{name}-locations.lang >> %{name}-3.0.lang
@@ -91,6 +91,8 @@ cat %{name}-locations.lang >> %{name}-3.0.lang
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-%{_datadir}/gtk-doc/html/%{name}-3.0
+%{_datadir}/gtk-doc/html/%{name}/*
 %{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
+%{_datadir}/vala/vapi/gweather-3.0.vapi
+%{_datadir}/vala/vapi/gweather-3.0.deps
 
