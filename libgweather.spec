@@ -91,6 +91,7 @@ cat %{name}-locations.lang >> %{name}-3.0.lang
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-#{_datadir}/gtk-doc/html/%{name}-3.0
+%{_datadir}/gtk-doc/html/%{name}/*
 %{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
-
+%{_datadir}/vala/vapi/gweather-%{gir_major}.vapi
+%{_datadir}/vala/vapi/gweather-%{gir_major}.deps
