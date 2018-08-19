@@ -93,5 +93,6 @@ cat %{name}-locations.lang >> %{name}-3.0.lang
 %{_includedir}/*
 %{_datadir}/gtk-doc/html/%{name}/*
 %{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
-%{_datadir}/vala/vapi/gweather-%{gir_major}.vapi
-%{_datadir}/vala/vapi/gweather-%{gir_major}.deps
+%{_datadir}/vala/vapi/gweather-3.0.vapi
+%{_datadir}/vala/vapi/gweather-3.0.deps
+
