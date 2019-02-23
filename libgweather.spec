@@ -10,8 +10,8 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.28.2
-Release:	3
+Version:	3.28.3
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.gnome.org
