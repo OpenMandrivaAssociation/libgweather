@@ -10,8 +10,8 @@
 
 Summary:	GNOME Weather applet library
 Name:		libgweather
-Version:	3.36.1
-Release:	2
+Version:	40.0
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.gnome.org
@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	timezone
 BuildRequires:  meson
 BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  python3dist(pygobject)
 BuildRequires:  gtk-doc
 
 %description
