@@ -79,6 +79,7 @@ cat %{name}-locations.lang >> %{name}-3.0.lang
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/locations.dtd
 %{_datadir}/%{name}/Locations.xml
+%{_libdir}/%{name}/Locations.bin
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather.gschema.xml
 
@@ -96,4 +97,3 @@ cat %{name}-locations.lang >> %{name}-3.0.lang
 %{_datadir}/gir-1.0/GWeather-%{gimajor}.gir
 %{_datadir}/vala/vapi/gweather-3.0.vapi
 %{_datadir}/vala/vapi/gweather-3.0.deps
-
