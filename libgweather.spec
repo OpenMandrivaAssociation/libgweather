@@ -21,15 +21,18 @@ BuildRequires:	intltool
 BuildRequires:	libxml2-utils
 BuildRequires:	pkgconfig(gconf-2.0) GConf2
 BuildRequires:	pkgconfig(geocode-glib-1.0)
+BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	timezone
+BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  python3dist(pygobject)
+BuildRequires:  python3dist(pylint)
 BuildRequires:  gtk-doc
 
 %description
