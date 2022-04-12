@@ -32,7 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  python3dist(pygobject)
-BuildRequires:  python3dist(pylint)
+#BuildRequires:  python3dist(pylint)
 BuildRequires:  gtk-doc
 
 %description
