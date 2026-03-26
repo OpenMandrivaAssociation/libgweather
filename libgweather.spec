@@ -11,14 +11,14 @@
 Summary:	GNOME Weather applet library
 Name:		libgweather
 Version:	40.0
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://www.gnome.org
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/libgweather/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool
-BuildRequires:	libxml2-utils
+BuildRequires:	libxml2-utils >= 2.15.2
 BuildRequires:	pkgconfig(gconf-2.0) GConf2
 BuildRequires:	pkgconfig(geocode-glib-1.0)
 BuildRequires:  pkgconfig(gladeui-2.0)
@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
-BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.15.2
 BuildRequires:	timezone
 BuildRequires:  cmake
 BuildRequires:  meson
